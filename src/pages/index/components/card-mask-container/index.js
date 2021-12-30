@@ -1,57 +1,76 @@
 import React, { Component } from 'react';
 import CardItem from './components/card-item';
 import './index.css';
+import { DropTarget } from 'react-dnd'
+import { acceptType } from '../../constant'
 
-export default class CardMaskContainer extends Component {
+class CardMaskContainer extends Component {
   render() {
-    const { className, fillInfo, preview, cardMaskViewCount } = this.props;
+    const { fillInfo, cardMaskViewCount, connectDropTarget } = this.props;
 
+    let result;
     if (cardMaskViewCount === 1) {
-      return (
-        <div className={`card-mask-root ${className}`}>
+      result = (
+        <div className={`card-mask-root`}>
           <div className="row">
-            <CardItem order={1} fillInfo={fillInfo} preview={preview} />
+            <CardItem order={1} fillInfo={fillInfo} />
           </div>
         </div>
       );
     }
 
     if (cardMaskViewCount === 4) {
-      return (
-        <div className={`card-mask-root ${className}`}>
+      result = (
+        <div className={`card-mask-root`}>
           <div className="row">
-            <CardItem order={1} fillInfo={fillInfo} preview={preview} />
-            <CardItem order={2} fillInfo={fillInfo} preview={preview} />
+            <CardItem order={1} fillInfo={fillInfo} />
+            <CardItem order={2} fillInfo={fillInfo} />
           </div>
 
           <div className="row">
-            <CardItem order={3} fillInfo={fillInfo} preview={preview} />
-            <CardItem order={4} fillInfo={fillInfo} preview={preview} />
+            <CardItem order={3} fillInfo={fillInfo} />
+            <CardItem order={4} fillInfo={fillInfo} />
           </div>
         </div>
       );
     }
 
-    return (
-      <div className={`card-mask-root ${className}`}>
-        <div className="row">
-          <CardItem order={1} fillInfo={fillInfo} preview={preview} />
-          <CardItem order={2} fillInfo={fillInfo} preview={preview} />
-          <CardItem order={3} fillInfo={fillInfo} preview={preview} />
-        </div>
+    if (cardMaskViewCount === 9) {
+      result = (
+        <div className={`card-mask-root`}>
+          <div className="row">
+            <CardItem order={1} fillInfo={fillInfo} />
+            <CardItem order={2} fillInfo={fillInfo} />
+            <CardItem order={3} fillInfo={fillInfo} />
+          </div>
 
-        <div className="row">
-          <CardItem order={4} fillInfo={fillInfo} preview={preview} />
-          <CardItem order={5} fillInfo={fillInfo} preview={preview} />
-          <CardItem order={6} fillInfo={fillInfo} preview={preview} />
-        </div>
+          <div className="row">
+            <CardItem order={4} fillInfo={fillInfo} />
+            <CardItem order={5} fillInfo={fillInfo} />
+            <CardItem order={6} fillInfo={fillInfo} />
+          </div>
 
-        <div className="row">
-          <CardItem order={7} fillInfo={fillInfo} preview={preview} />
-          <CardItem order={8} fillInfo={fillInfo} preview={preview} />
-          <CardItem order={9} fillInfo={fillInfo} preview={preview} />
+          <div className="row">
+            <CardItem order={7} fillInfo={fillInfo} />
+            <CardItem order={8} fillInfo={fillInfo} />
+            <CardItem order={9} fillInfo={fillInfo} />
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
+
+    return connectDropTarget && connectDropTarget(result);
   }
 }
+
+const spec = {
+}
+
+export default DropTarget(
+  acceptType.DragElement,
+  spec,
+  (connect, monitor) => ({
+    connectDropTarget: connect.dropTarget(),
+    canDrop: monitor.canDrop(),
+  }),
+)(CardMaskContainer);

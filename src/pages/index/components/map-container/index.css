@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -9,4 +10,9 @@
 
 .map-root .card-mask-hide {
   display: none;
+}
+
+.map-root .features-container {
+  background-color: #c1c1c1;
+  padding: 4px;
 }

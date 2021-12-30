@@ -9,6 +9,8 @@ import { Radio } from 'antd';
 
 const RadioGroup = Radio.Group;
 
+console.log('===React')
+console.dir(Component)
 export default class Container extends Component {
 	state = {
 		fillInfo: [],
@@ -57,13 +59,13 @@ export default class Container extends Component {
 							<DragElement name="元素3" onFillContainer={this.handleSaveFillInfo} />
 						</div>
 						<div className="right-container">
-							<MapConainer fillInfo={fillInfo} cardMaskViewCount={cardMaskViewCount} />
+							<MapConainer onFillContainer={this.handleSaveFillInfo} />
 						</div>
 					</div>
 					<div className="preview-container">
 						<h2>预览区域：</h2>
 						<div className="preview-card-mask-container">
-							<CardMask preview fillInfo={fillInfo} cardMaskViewCount={cardMaskViewCount} />
+							<CardMask fillInfo={fillInfo} cardMaskViewCount={cardMaskViewCount} />
 						</div>
 					</div>
 				</div>

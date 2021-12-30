@@ -1,0 +1,8 @@
+.drag-element-root {
+  border: 1px dashed gray;
+  background-color: #fff;
+  padding: 4px;
+  text-align: center;
+  margin: 4px;
+  cursor: move;
+}

@@ -1,0 +1,34 @@
+.action-container {
+  padding-top: 32px;
+}
+
+.action-container .action-item {
+  text-align: center;
+}
+
+.root {
+  padding-top: 32px;
+  display: flex;
+  height: 500px;
+}
+
+.root .left-container {
+  width: 250px;
+  flex: none;
+  background-color: #c1c1c1;
+}
+
+.root .right-container {
+  flex: 1;
+  background-color: #f1f1f1;
+}
+
+
+.preview-container {
+  padding-top: 32px;
+  height: 300px;
+}
+
+.preview-container .preview-card-mask-container {
+  position: relative;
+}

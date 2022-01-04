@@ -3,6 +3,11 @@ import './index.css';
 import createDragElementWithDom from '../create-drag-element-with-dom';
 
 export default class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    window.parentComponent = this;
+  }
+
   componentDidMount() {
     const { onFillContainer } = this.props;
     const divImg = document.createElement('div');
@@ -16,7 +21,7 @@ export default class MapContainer extends Component {
     // mark: 现在改成这种方式追加内容
     createDragElementWithDom({
       onFillContainer,
-      parentComponent: this,
+      parentComponent: window.parentComponent,
       container: document.querySelector('#features-container'),
       element: divImg,
       name: name,
